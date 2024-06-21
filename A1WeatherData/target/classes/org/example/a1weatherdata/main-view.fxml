@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Import necessary JavaFX components -->
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<!-- Define an AnchorPane as the root layout -->
+<AnchorPane fx:id="mainPane" prefHeight="450.0" prefWidth="650.0" style="-fx-background-color: #1e8ac3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.a1weatherdata.WeatherController">
+    <children>
+        <!-- Button to switch to the table view -->
+        <Button layoutX="550.0" layoutY="400.0" mnemonicParsing="false" onAction="#switchToTableView" text="View Table" />
+
+        <!-- BarChart to display weather data -->
+        <BarChart fx:id="barChart" layoutX="24.0" layoutY="80.0" prefHeight="305.0" prefWidth="602.0">
+            <xAxis>
+                <CategoryAxis label="Date" side="BOTTOM" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT" />
+            </yAxis>
+        </BarChart>
+
+        <!-- Label for the title -->
+        <Label layoutX="197.0" layoutY="14.0" prefHeight="56.0" prefWidth="255.0" text="Toronto Forecast" textAlignment="CENTER">
+            <font>
+                <Font name="Berlin Sans FB Demi Bold" size="34.0" />
+            </font>
+        </Label>
+
+        <!-- ImageView to display an icon -->
+        <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="24.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../icon.png" />
+            </image>
+        </ImageView>
+
+        <!-- RadioButton to select "Humidity" data for the graph -->
+        <RadioButton layoutX="242.0" layoutY="399.0" mnemonicParsing="false" onAction="#loadHumidityData" text="Humidity">
+            <toggleGroup>
+                <ToggleGroup fx:id="graphToggleGroup" />
+            </toggleGroup>
+        </RadioButton>
+
+        <!-- RadioButton to select "Feels Like" data for the graph -->
+        <RadioButton layoutX="146.0" layoutY="399.0" mnemonicParsing="false" onAction="#loadFeelslikeData" text="Feels Like" toggleGroup="$graphToggleGroup" />
+
+        <!-- RadioButton to select "Temperature" data for the graph, selected by default -->
+        <RadioButton layoutX="39.0" layoutY="399.0" mnemonicParsing="false" onAction="#loadTempData" selected="true" text="Temperature" toggleGroup="$graphToggleGroup" />
+
+        <!-- RadioButton to select "Wind Speed" data for the graph -->
+        <RadioButton layoutX="333.0" layoutY="399.0" mnemonicParsing="false" onAction="#loadWindSpeedData" text="Wind Speed" toggleGroup="$graphToggleGroup" />
+
+        <!-- RadioButton to select "Pressure" data for the graph -->
+        <RadioButton layoutX="436.0" layoutY="399.0" mnemonicParsing="false" onAction="#loadPreassureData" text="Pressure" toggleGroup="$graphToggleGroup" />
+    </children>
+</AnchorPane>
